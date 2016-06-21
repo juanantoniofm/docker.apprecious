@@ -1,0 +1,22 @@
+version: "2"
+services:
+  app:
+    #image: apprecious
+    # In version 2, build can specify a build context and an alternate Dockerfile
+    build:
+      context: .
+      dockerfile: ops/Dockerfile.apprecious
+    depends_on: 
+      - redis
+    links:
+      - redis
+    ports:
+      - 4567
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  
+  redis:
+    image: redis:3.0
+    ports:
+      - 6379

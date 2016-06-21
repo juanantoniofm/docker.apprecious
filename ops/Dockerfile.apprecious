@@ -1,0 +1,12 @@
+FROM  ruby:2.1
+
+# My jewel. A ruby app that scales. ;) 
+
+RUN mkdir -p /opt/app
+RUN gem install redis sinatra
+
+ENV RACK_ENV=production
+ADD ./app /opt/app
+
+WORKDIR /opt/app
+CMD ["ruby","hello-world.rb"]
