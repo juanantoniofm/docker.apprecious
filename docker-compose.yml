@@ -1,5 +1,12 @@
 version: "2"
 services:
+  loadbalancer:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   app:
     #image: apprecious
     # In version 2, build can specify a build context and an alternate Dockerfile
@@ -15,6 +22,7 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - VIRTUAL_HOST=apprecious.local
   
   redis:
     image: redis:3.0
