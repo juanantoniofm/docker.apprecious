@@ -11,3 +11,4 @@ echo "This is the entry:"
 echo "$host          dockerhost apprecious.local" >> /etc/hosts
 
 vi /etc/hosts
+exit 0
