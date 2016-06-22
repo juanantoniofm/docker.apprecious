@@ -1,14 +1,18 @@
 help:
 	@echo "help        - this text"
 	@echo "magic       - Validate your environment, install dependencies, provision the environment, configure everything. One step. Like magic."
-	@echo "install     - install stuff"
+	@echo "configure-hostnames  - Add an entry to your /etc/hosts to refer to where your docker service is."
 	@echo "run         - run stuff"
-
-install:
-	echo "foo"
 
 
 run:
 	docker-compose up
 
-magic: install run
+configure-hostnames:
+	sudo bash ops/hostconfig.sh
+
+
+benchmark:
+	httperf --num-calls 10000 --num-conns 3 --port 80 --server localhost --uri=/ --add-header "Host: apprecious.local"
+
+magic: configure-hostnames run benchmark
