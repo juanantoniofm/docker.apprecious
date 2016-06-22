@@ -8,5 +8,7 @@ RUN gem install redis sinatra
 ENV RACK_ENV=production
 ADD ./app /opt/app
 
+EXPOSE 4567
+
 WORKDIR /opt/app
 CMD ["ruby","hello-world.rb"]

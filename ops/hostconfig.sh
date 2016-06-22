@@ -8,6 +8,6 @@ host=$(echo $DOCKER_HOST | sed 's/.*\/\/\(.*\):.*/\1/p' )
 
 echo "This is the entry:"
 
-sudo -p "Give me your sunglasses, your jacket, and your password"  echo "$host          dockerhost" >> /etc/hosts
+echo "$host          dockerhost apprecious.local" >> /etc/hosts
 
 vi /etc/hosts

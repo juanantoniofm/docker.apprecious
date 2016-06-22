@@ -12,7 +12,7 @@ configure-hostnames:
 	sudo bash ops/hostconfig.sh
 
 
-benchmark:
-	httperf --num-calls 10000 --num-conns 3 --port 80 --server localhost --uri=/ --add-header "Host: apprecious.local"
+benchmark: configure-hostnames
+	httperf --num-calls 10000 --num-conns 3 --port 80 --server localhost --uri=/ --add-header "Host: apprecious.local\n"
 
 magic: configure-hostnames run benchmark
